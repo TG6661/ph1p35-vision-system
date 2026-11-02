@@ -1,23 +1,21 @@
-# 协作流程
+# 开发与验证要求
 
-1. 从最新 main 建立单一目的的分支，例如 `fix/menu-navigation`、`feature/style-effect`。
-2. 修改前阅读 AGENTS.md；生产 RTL/固件修改单项隔离，不能混入无关功能回退。
-3. 首次克隆先执行 `tools/prepare-local.ps1`，核对 FD 实际项目路径。
-4. 修改后运行 `python tools/check-repository.py`、`./tools/check-powershell.ps1` 和 Host 回归。新增文件应先 `git add`，输入检查才能看到新增文件。
-5. 涉及 RTL 时补充相关功能仿真。GitHub 的基础 CI 不能代替 ModelSim、TD STA 或板级验证。
-6. 提交并 Push 分支，创建 Pull Request，填写模板，等自动检查完成后由队友审阅。
-7. 合并前检查 bit / ELF / ABI 影响。使用 Squash and merge 或普通合并均可；不要强推覆盖队友提交。
+## 工程修改
 
-GitHub Desktop 操作：Current branch → New branch → 修改 → Commit → Publish branch/Push origin → Create Pull Request。
+- 修改前阅读 [AGENTS.md](AGENTS.md)，每次修改围绕一个功能或问题展开。
+- 保持 DDR 地址、仲裁与帧所有权、三级 OSD 顺序及 CDC / 复位语义。
+- 寄存器变更同步更新 RTL、`fabric_regs.h`、固件、capability 和相关测试。
+- 本机 `.fd` / `.launch` 配置由 `tools/prepare-local.ps1` 生成；TD `.al` 根 Path 的本机变化与设计设置修改分开处理。
 
-## 自动检查范围
+## 验证要求
 
-GitHub Actions 使用 Windows、Python、PowerShell 和 MinGW GCC，检查生产输入引用、必要 ROM、文件大小、脚本语法以及七组 Host 回归。允许手动运行 workflow_dispatch。
+- 运行 `python tools/check-repository.py`、`./tools/check-powershell.ps1` 和受影响的 Host 回归；输入检查使用 Git 跟踪清单，新增输入须先纳入跟踪。
+- RTL 修改补充对应功能仿真；工具路径和回归命令见 [README](README.md#功能验证) 与 [环境与配置](docs/SETUP.md)。
+- 评审材料说明触发条件、修改后的行为、验证命令与结果，以及 ABI、CDC、DDR 和 bit / ELF 的影响。
+- TD 实现与板卡加载由开发者手动执行，资源、时序和板级结果分别记录。
 
-不启动 TD、FD、ModelSim、OpenOCD 或板卡；不含厂商安装包和授权文件。私有仓库的 Actions 使用量按账号配额计费，首次开启后可在 GitHub Billing / Actions 查看用量。
+## 自动检查
 
-项目准备脚本产生的 `.fd` / `.launch` 配置由 Git 忽略；`.al` 根 Path 的本机变化不作为功能修改提交。保留其其他设计设置。
+GitHub Actions 使用 Windows、Python、PowerShell 和 MinGW GCC，检查生产输入引用、必要 ROM、文件大小、脚本语法及七组 Host 回归。
 
-## Release
-
-只有板级确认匹配的 bit / ELF 才标记为可运行版本。发布格式参见 [版本发布模板](docs/RELEASE_TEMPLATE.md)。自动检查不自动创建标签、不发布 Release、不合并 Pull Request。
+RTL 功能仿真使用 ModelSim；资源与时序检查使用 TD；整机功能通过板级测试验证。

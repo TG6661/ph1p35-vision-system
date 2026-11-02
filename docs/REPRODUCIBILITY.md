@@ -1,8 +1,8 @@
 # 仓库复现验证
 
-## 当前主分支：516a995
+## 已验证源码：516a995
 
-2026-11-02，对合并 PR #1 后的 `516a9954aa3a1b7169c8be26cabf92aaa4fb4020` 完成干净克隆验证。
+2026-11-02，对源码提交 `516a9954aa3a1b7169c8be26cabf92aaa4fb4020` 完成干净克隆验证。
 
 **结果：文件依赖检查、七组 Host 回归、24 项 RTL/集成检查及 RISC-V 固件构建全部通过。**
 
@@ -19,9 +19,7 @@
 
 ### 验证方式
 
-使用 `git clone --no-local --branch main --single-branch` 创建独立副本，只包含提交中的文件。GitHub 命令行当前缺少私有仓库凭据，因此克隆源使用已经同步的本地 main；该副本不携带原工程旧缓存、旧 ELF 或本机 FD 配置。
-
-验证目录：`E:/INTFPGA/github_verify/main-516a995-20261102`。
+从已同步至上述提交的本地 main，使用 `git clone --no-local --branch main --single-branch` 创建独立副本。副本仅包含已提交文件，构建与测试从空缓存开始。
 
 ```powershell
 ./tools/prepare-local.ps1
@@ -44,14 +42,6 @@ python tools/check-repository.py
 - ELF 段大小：text=51676、data=248、bss=9604 字节。
 - ELF SHA-256：`7ca94937dfe562d7cd631c5b517f04a6fa7aa55e26f7329d4d9294e7a21423a4`。
 
-生成的固件留在验证目录，原工程的生产输入和已有 bit / ELF 保持不变。
+### 验证范围
 
-### 云端与板级状态
-
-用户提供的 PR #1 页面显示两项 GitHub 检查通过，该 PR 已合并到 main。此次本机验证补充了完整 RTL 回归和厂商固件构建。
-
-本轮验证范围为源码构建与功能仿真；未运行 TD 实现或板级测试，未创建 Release。HPF 再生成要求和 bit/ELF 对应关系见 [环境与配置](SETUP.md)。
-
-## 前次分支验证
-
-2026-11-02，repo-improvements 的干净副本已通过输入检查、七组 Host 与固件构建。缺失 DDR ROM 和 50 MiB 误提交文件的检查器测试也通过。此次 main 完整验证覆盖了上述构建与回归入口，并增加了 24 项 RTL/集成检查。
+本记录覆盖源码构建与功能仿真，未执行 TD 综合、布局布线、静态时序分析或板级测试。HPF 再生成要求和 bit / ELF 对应关系见 [环境与配置](SETUP.md)。

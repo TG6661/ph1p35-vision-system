@@ -47,4 +47,4 @@
 
 GitHub Actions 检查文件引用、脚本语法和 Host 业务逻辑；ModelSim 验证 RTL 功能。TD 资源/时序报告与板级画面检查分别完成。当前记录见 [REPRODUCIBILITY.md](REPRODUCIBILITY.md)。
 
-源码仓库包含完整开发输入；bit、ELF、MAP、实现缓存和日志由 `.gitignore` 排除。此前排查说明属于历史记录，其中部分日志仅留在原本机目录。
+源码仓库包含完整开发输入；bit、ELF、MAP、实现缓存和日志由 `.gitignore` 排除。

@@ -1,0 +1,31 @@
+{
+  "implementation_report_time": "2026-10-31 19:39:01",
+  "tool": "Tang Dynasty v6.2.168116",
+  "top": "design_top_wrapper",
+  "device": "PH1P35MDG324",
+  "speed_grade": 3,
+  "confidence": "Routed",
+  "corners": [
+    "Slow",
+    "Fast"
+  ],
+  "slices": 18390,
+  "slices_percent": 86.68,
+  "setup_wns_ns": 0.107,
+  "hold_wns_ns": 0.02,
+  "setup_tns_ns": 0.0,
+  "hold_tns_ns": 0.0,
+  "sta_coverage_percent": 98.14,
+  "source_commit": null,
+  "source_commit_note": "Original implementation report has no Git commit association.",
+  "reports": [
+    {
+      "path": "FPGA/td_project/camera_to_dsi_display_Runs/phy_1/final_timing.rpt",
+      "sha256": "4e352e0ad8a015ebb85fa0fdc30161b5b69a5c3299cd1d971255ece8143a2702"
+    },
+    {
+      "path": "FPGA/td_project/camera_to_dsi_display_Runs/phy_1/run.log",
+      "sha256": "ed9374df73b83cdc1ba38fd4cfe311121e6358c27cc950309dbf9928adf4c8f8"
+    }
+  ]
+}

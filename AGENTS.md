@@ -1,15 +1,11 @@
 # final 当前工程开发规则
 
-## GitHub 仓库整理补充（2026-11-02）
+## 工程配置
 
-- 当前仓库已完成首次提交 `7e86693` 并设置 GitHub 远程；日常分支协作步骤见 `docs/GITHUB_GUIDE.md`。
-- bit、ELF、MAP、TD 实现结果和仿真缓存保留本地，由 `.gitignore` 排除，不代表删除。
-- 下文历史哈希清单和日志留作本机证据，不随仓库上传；本次整理验证以 `docs/REPOSITORY_PREPARATION.md` 为准。
-- 工具脚本支持 Gcc/FdRoot/Vsim/TdSimDir 参数；默认工具位置可能需要本机配置。
-- 克隆后先运行 `tools/prepare-local.ps1` 生成本机 FD 配置；它不执行 TD 或下载。源工程没有 HPF，BSP 再生成需要用户自行导出。
-- 本次未修改 RTL、固件算法或已实现 bit/ELF。不要为上传方便删除生产 IP/ROM 或改变 ABI。
-
-本目录以当前工程、当前实现产物和可独立运行的验证环境为开发入口，见 README.md。本目录不包含历史工程和交接目录。
+- 工程入口与功能概览见 README.md，环境配置见 docs/SETUP.md，构建与功能验证记录见 docs/REPRODUCIBILITY.md。
+- bit、ELF、MAP、TD 实现结果和仿真缓存由 `.gitignore` 排除。
+- 工具脚本支持 Gcc/FdRoot/Vsim/TdSimDir 参数，按本机安装位置配置。
+- 克隆后运行 `tools/prepare-local.ps1` 生成本机 FD 配置；它不执行 TD 或下载。现有 BSP 可构建，再生成 BSP 需从匹配的 TD 工程导出 HPF。
 
 ## 操作边界
 

@@ -4,7 +4,7 @@
 
 <img src="docs/assets/system.jpg" alt="PH1P35视觉系统实物连接" width="560" />
 
-[快速开始](#快速开始) · [环境与配置](docs/SETUP.md) · [验证记录](docs/REPRODUCIBILITY.md) · [协作流程](CONTRIBUTING.md)
+[快速开始](#快速开始) · [环境与配置](docs/SETUP.md) · [验证记录](docs/REPRODUCIBILITY.md)
 
 ## 主要功能
 
@@ -55,8 +55,6 @@ git clone https://github.com/TG6661/ph1p35-vision-system.git
 cd ph1p35-vision-system
 ```
 
-也可在 GitHub Desktop 中选择 **File → Clone repository**。
-
 **2. 生成本机工程配置**
 
 ```powershell
@@ -79,15 +77,11 @@ cd ph1p35-vision-system
 - FD：在新工作区中导入 `FDWork/MCU_startup` 和 `FDWork/ph1p35_hello`。
 - TD 实现和板卡加载在开发工具中手动执行；配置与版本对应关系见 [环境与配置](docs/SETUP.md)。
 
-## 测试
+## 功能验证
 
 在仓库根目录执行，工具路径按本机安装位置填写：
 
 ```powershell
-# 文件依赖和脚本语法
-python tools/check-repository.py
-./tools/check-powershell.ps1
-
 # 七组 Host 回归
 ./FPGA/sim/current/run_host.ps1 -Gcc D:/QT/Tools/mingw1310_64/bin/gcc.exe
 
@@ -98,7 +92,7 @@ python tools/check-repository.py
   -TdSimDir E:/TD/sim_release/ph1p
 ```
 
-每次 Push / Pull Request，GitHub Actions 自动执行文件检查、脚本语法检查和七组 Host 测试。运行结果及日志可在 **Actions** 页面查看；完整本地验证见 [验证记录](docs/REPRODUCIBILITY.md)。
+已验证源码提交 `516a995` 通过七组 Host 回归、24 项 RTL/集成检查及 RISC-V 固件构建，详见 [验证记录](docs/REPRODUCIBILITY.md)。
 
 ## 工程目录
 
@@ -109,7 +103,9 @@ python tools/check-repository.py
 | `FDWork/ph1p35_hello/` | MCU 应用与链接脚本 |
 | `FDWork/MCU_startup/` | SDK / BSP |
 | `FPGA/sim/current/` | Host 测试、RTL 仿真与回归脚本 |
-| `tools/` | 本机配置和仓库检查工具 |
-| `docs/` | 环境配置、验证记录与协作说明 |
+| `tools/` | 工程配置与检查脚本 |
+| `docs/` | 环境配置与技术文档 |
 
-源码与开发输入由 Git 管理，构建产物和运行日志保存在本地。协作开发请参阅 [CONTRIBUTING.md](CONTRIBUTING.md)，邀请队友的步骤见 [协作指南](docs/GITHUB_GUIDE.md#邀请队友)。第三方代码说明见 [THIRD_PARTY.md](docs/THIRD_PARTY.md)。
+## 许可说明
+
+SDK / BSP 的许可见 [LICENSE](FDWork/MCU_startup/LICENSE)，第三方代码与 IP 的说明见 [THIRD_PARTY.md](docs/THIRD_PARTY.md)。

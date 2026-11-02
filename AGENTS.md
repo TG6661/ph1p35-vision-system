@@ -2,7 +2,7 @@
 
 ## GitHub 仓库整理补充（2026-11-02）
 
-- 当前目录已初始化本地 Git，尚未首次提交/发布；上传步骤见 `docs/GITHUB_GUIDE.md`。
+- 当前仓库已完成首次提交 `7e86693` 并设置 GitHub 远程；日常分支协作步骤见 `docs/GITHUB_GUIDE.md`。
 - bit、ELF、MAP、TD 实现结果和仿真缓存保留本地，由 `.gitignore` 排除，不代表删除。
 - 下文历史哈希清单和日志留作本机证据，不随仓库上传；本次整理验证以 `docs/REPOSITORY_PREPARATION.md` 为准。
 - 工具脚本支持 Gcc/FdRoot/Vsim/TdSimDir 参数；默认工具位置可能需要本机配置。

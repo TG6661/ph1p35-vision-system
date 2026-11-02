@@ -1,0 +1,52 @@
+name: Repository and Host checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: host-checks-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  host-checks:
+    runs-on: windows-2022
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check tracked inputs and file sizes
+        run: python tools/check-repository.py
+      - name: Parse PowerShell scripts
+        run: ./tools/check-powershell.ps1
+      - name: Generate checkout-local FD configuration
+        run: ./tools/prepare-local.ps1
+      - name: Install Host compiler
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          path-type: inherit
+          update: false
+          install: mingw-w64-ucrt-x86_64-gcc
+      - name: Run seven Host suites
+        shell: msys2 {0}
+        run: |
+          export HOST_GCC="$(cygpath -m /ucrt64/bin/gcc.exe)"
+          pwsh.exe -NoProfile -File FPGA/sim/current/run_host.ps1
+      - name: Upload Host logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: host-check-logs
+          path: FPGA/sim/current/runs/**/*.log
+          if-no-files-found: ignore
+          retention-days: 14

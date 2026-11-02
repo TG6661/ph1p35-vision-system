@@ -32,8 +32,8 @@
 
 旧说明和哈希清单只反映当时的检查。本次上传排除了旧清单；原说明可能指向本地忽略日志，请勿将其当作本次新验证。
 
-## 本地 Git 状态
+## 首次整理时的 Git 状态（历史记录）
 
-已初始化 `main` 分支，没有设置远程地址，没有创建首次 commit，也没有上传。用 GitHub Desktop 的 **Add local repository** 添加当前目录后，检查 Changes、提交、再 Publish。
+首次整理结束时仅初始化本地仓库，尚未提交。随后用户已创建首次提交 `7e86693` 并发布到 `TG6661/ph1p35-vision-system`。这段记录不表示当前仍未上传。后续验证见 [REPRODUCIBILITY.md](REPRODUCIBILITY.md)。
 
 开始整理前备份位于仓库外 `E:/INTFPGA/final_github_backup_20261102_110609`，含被修改的原文档/脚本和整理前文件 SHA-256。它不会随本仓库上传。

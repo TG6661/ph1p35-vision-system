@@ -1,4 +1,6 @@
-# GitHub 新手上传步骤
+# GitHub 上传与日常协作
+
+当前仓库已完成首次发布：`TG6661/ph1p35-vision-system`，首次提交为 `7e86693`。已发布后不必重复执行第 3、4 节；后续使用分支和 Pull Request。
 
 ## 1. 准备账号与 GitHub Desktop
 
@@ -8,7 +10,7 @@
 
 ## 2. 添加已经准备好的本地仓库
 
-本项目已经在 `E:\INTFPGA\final` 初始化本地 Git 仓库，主分支为 main；尚未创建 GitHub 远程仓库，也没有上传或代替你创建首次提交。
+本项目已经在 `E:\INTFPGA\final` 初始化本地 Git 仓库，主分支为 main，已经关联 GitHub 远程。
 
 1. Desktop → File → Add local repository。
 2. Local path 选择 `E:\INTFPGA\final`。
@@ -16,14 +18,14 @@
 4. Changes 中查看准备提交的文件。应包含 README、.gitignore、FDWork、FPGA、tools、docs；不应包含 TD 的 `_Runs`、固件 build 或仿真 `_work`。
 5. 点击文件可看差异。不要使用 Discard all changes 或 git clean，这些命令与上传无关。
 
-## 3. 第一次提交
+## 3. 第一次提交（新仓库参考，当前仓库已完成）
 
 1. 左下角 Summary 填写：`Initial import of PH1P35 vision system`。
 2. Description 可留空。
 3. 点击 Commit to main。某些版本按钮显示 Commit N files to main，含义相同。
 4. 如果 Git 提示配置姓名与邮箱，在 Desktop → File → Options → Git 中配置，再重试。Commit 只保存在本机，还没有上传。
 
-## 4. 发布到 GitHub
+## 4. 发布到 GitHub（当前仓库已完成）
 
 1. 点击上方 Publish repository。
 2. Name 建议 `ph1p35-vision-system`，也可保留 `final`。远程仓库名与本地文件夹名可以不同。
@@ -45,7 +47,7 @@
 1. 开始工作前 Fetch origin；出现 Pull origin 时先拉取。多人同时改同一文件时使用各自分支更安全。
 2. 修改工程，完成静态/功能验证。
 3. Desktop → Changes 检查本次改动。
-4. 填写明确提交说明 → Commit to main → Push origin。
+4. 在 Current branch → New branch 建立功能分支，填写提交说明 → Commit → Publish branch / Push origin → Create Pull Request。自动检查通过且队友审阅后合并 main。
 5. 浏览器确认新提交已出现。只 Commit 没有 Push，队友看不到修改。
 
 现有本地 bit、ELF、MAP、缓存和日志保留在原处，但由 .gitignore 排除。它们不会因为 Push 一起上传。即使你看到整个目录仍较大，也不代表上传体积相同。

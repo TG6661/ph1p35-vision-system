@@ -1,6 +1,8 @@
 # 第三方代码与 IP
 
-- `FDWork/MCU_startup/LICENSE` 为原有 BSD 3-Clause 许可，随 SDK/BSP 保留；它不自动覆盖整个工程。
-- FPGA 部分含厂商生成 IP、加密 RTL 与接口封装，已完整保留，以免破坏工程依赖。公开分发这些文件的权限需按各自来源确认。
-- 原有版权头、许可和来源说明不应删除。本次整理不为整个项目添加 MIT、GPL 等统一授权。
-- 建议首次发布设为 Private，并仅邀请需要协作的队友；改为 Public 前确认所含第三方 IP 的公开分发权限。
+| 组件 | 来源与许可 |
+| --- | --- |
+| SDK / BSP（`FDWork/MCU_startup/`） | 安路及贡献者，BSD 3-Clause，详见 [原始许可证](../FDWork/MCU_startup/LICENSE) |
+| FPGA 厂商 IP、加密 RTL 与接口封装（`FPGA/user_source/`） | 来源与适用条款见各文件的版权头及随附说明 |
+
+仓库未设置覆盖整个工程的统一许可证；SDK / BSP 的 BSD 3-Clause 许可不自动适用于其他组件。

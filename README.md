@@ -4,13 +4,13 @@
 
 <img src="docs/assets/system.jpg" alt="PH1P35视觉系统实物连接" width="560" />
 
-[快速开始](#快速开始) · [环境与配置](docs/SETUP.md) · [验证记录](docs/REPRODUCIBILITY.md)
+[效果展示](#效果展示) · [系统架构](docs/ARCHITECTURE.md) · [性能数据](docs/PERFORMANCE.md) · [快速开始](#快速开始) · [验证记录](docs/REPRODUCIBILITY.md)
 
 ## 主要功能
 
 | 模式 | 功能与处理方式 |
 | --- | --- |
-| **RED** | 红色目标识别与圆形/矩形分类；固定白平衡、Gamma 0.70、STRONG 空间滤波；PATROL 下有目标跟踪、无合格目标巡航 |
+| **RED** | 红色目标识别与圆形/矩形分类；检测支路固定白平衡与 Gamma 0.70，共享前端 STRONG 空间滤波；PATROL 下有目标跟踪、无合格目标巡航 |
 | **MOTION** | 运动区域检测、定位与高亮，空间滤波旁路 |
 | **STYLE** | AWB → 固定中心减绿（224/256）→ Gamma 0.55 → FX → CL，空间滤波旁路 |
 
@@ -19,6 +19,22 @@
 - **自动曝光**：线性 RGB 亮度反馈，协同调节 AE / AG；默认关闭，目标亮度 80、死区约 ±5，支持相机参数确认与 NACK 重试。
 - **手动调节**：AE 2..1991、AG 16..239；菜单按当前模式显示可调参数。
 - **云台控制**：MG90S 双轴 PWM，TRACK 提供 OFF / PATROL 两档。
+
+## 效果展示
+
+以下为系统板级实拍，STYLE 以 ASCII 彩色字符画为例。
+
+| RED · 目标识别与跟踪 | MOTION · 运动高亮 | STYLE · ASCII 字符画 |
+| :---: | :---: | :---: |
+| <img src="docs/assets/red-tracking.jpg" alt="RED 模式识别红色圆形与矩形目标的实拍画面" width="300" /> | <img src="docs/assets/motion-highlight.jpg" alt="MOTION 模式高亮运动物体的实拍画面" width="300" /> | <img src="docs/assets/style-ascii.jpg" alt="STYLE 模式将图像转换为彩色 ASCII 字符的实拍画面" width="300" /> |
+| 目标分类与位置标注，配合双轴云台跟踪 | 突出运动区域，支持检测参数调节 | 16×16 像素映射为字符单元，保留色彩层次 |
+
+## 关键设计特点
+
+- **FPGA 与 MCU 分工**：FPGA 承担像素流水、统计和显示，MCU 完成候选目标后处理、曝光与白平衡计算、模式配置和云台控制。
+- **共享前端与 DDR 后处理**：三模式复用四像素 RAW 前端及去马赛克，线性 RGB 经 DDR 缓存后以两像素/拍执行显示后处理。
+- **帧级配置一致性**：跨时钟 mailbox 传递稳定配置，通过帧首应用、accepted/applied 确认及 generation 标记协调模式切换和结果归属。
+- **闭环控制与故障恢复**：曝光统计取自白平衡/Gamma 前的线性 RGB；相机 AE/AG 八项参数整组确认，暂态 NACK 通过退避与重试恢复。
 
 ## 硬件与架构
 
@@ -43,6 +59,20 @@ flowchart LR
     M -. 相机I²C .-> A
     M --> P[双轴PWM云台]
 ```
+
+模块职责、DDR 帧管理、控制接口及跨时钟机制见 [系统架构](docs/ARCHITECTURE.md)。
+
+## 关键指标
+
+| 指标 | 数值 | 来源 |
+| --- | --- | --- |
+| 图像尺寸 | 1280×720 | 当前 RTL 配置 |
+| 像素并行度 | 前端 4 像素/拍，后处理 2 像素/拍 | 当前生产模块实例参数 |
+| FPGA Slice | 18,390（86.68%） | 2026-10-31 TD 布局布线报告 |
+| Setup / Hold 最差裕量 | +0.107 ns / +0.020 ns | 同一 TD 实现报告 |
+| RAW 帧首至 HDMI 发送端首像素延迟 | 约 50～90 ms | 板级 LAT 调试计数观察 |
+
+实现基线、LAT 测量端点及帧率口径见 [性能与测量](docs/PERFORMANCE.md)。
 
 ## 快速开始
 

@@ -1,0 +1,9 @@
+# Keep existing byte sequences / line endings for hardware and firmware inputs.
+# This avoids silently rewriting IP, ROM data or generated vendor sources.
+* -text
+*.png binary
+*.jpg binary
+*.pdf binary
+*.bit binary
+*.elf binary
+*.bin binary

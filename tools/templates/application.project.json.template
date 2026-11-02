@@ -1,0 +1,14 @@
+{
+  "arch": "rv32",
+  "bspLocation": "@REPO_ROOT@/FDWork/MCU_startup",
+  "bspName": "MCU_startup",
+  "chip": "ph1p35",
+  "languageType": "C",
+  "location": "@REPO_ROOT@/FDWork/ph1p35_hello",
+  "name": "ph1p35_hello",
+  "os": "standalone",
+  "processor": "rpu",
+  "templateName": "HELLOWORLD",
+  "toolVersion": "862c784 (2026-09-02-16:28)",
+  "type": "application"
+}

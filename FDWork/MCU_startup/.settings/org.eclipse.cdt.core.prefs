@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+environment/project/com.anlogic.sdk.embedcdt.managedbuild.cross.riscv.config.lib.debug.957778193/COMPILE_PREFIX/delimiter=;
+environment/project/com.anlogic.sdk.embedcdt.managedbuild.cross.riscv.config.lib.debug.957778193/COMPILE_PREFIX/operation=replace
+environment/project/com.anlogic.sdk.embedcdt.managedbuild.cross.riscv.config.lib.debug.957778193/COMPILE_PREFIX/value=${IDE_ROOT_PATH}/toolchain/gcc/riscv/ph1p35/bin/riscv64-unknown-elf-
+environment/project/com.anlogic.sdk.embedcdt.managedbuild.cross.riscv.config.lib.debug.957778193/append=true
+environment/project/com.anlogic.sdk.embedcdt.managedbuild.cross.riscv.config.lib.debug.957778193/appendContributed=true
+environment/project/com.anlogic.sdk.embedcdt.managedbuild.cross.riscv.config.lib.release.747659674/COMPILE_PREFIX/delimiter=;
+environment/project/com.anlogic.sdk.embedcdt.managedbuild.cross.riscv.config.lib.release.747659674/COMPILE_PREFIX/operation=replace
+environment/project/com.anlogic.sdk.embedcdt.managedbuild.cross.riscv.config.lib.release.747659674/COMPILE_PREFIX/value=${IDE_ROOT_PATH}/toolchain/gcc/riscv/ph1p35/bin/riscv64-unknown-elf-
+environment/project/com.anlogic.sdk.embedcdt.managedbuild.cross.riscv.config.lib.release.747659674/append=true
+environment/project/com.anlogic.sdk.embedcdt.managedbuild.cross.riscv.config.lib.release.747659674/appendContributed=true

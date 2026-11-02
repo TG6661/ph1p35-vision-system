@@ -1,0 +1,11 @@
+{
+    "arch": "rv32",
+    "chip": "ph1p35",
+    "hpfFile": "@REPO_ROOT@/FDWork/MCU_startup/camera_to_dsi_display.hpf",
+    "location": "@REPO_ROOT@/FDWork/MCU_startup",
+    "name": "MCU_startup",
+    "os": "standalone",
+    "processor": "rpu",
+    "toolVersion": "862c784 (2026-09-02-16:28)",
+    "type": "platform"
+}

@@ -1,0 +1,4 @@
+# Generated firmware only. Keep source inputs and ROM data.
+/build/
+/Debug/
+/Release/

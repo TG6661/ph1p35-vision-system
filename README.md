@@ -2,6 +2,10 @@
 
 基于安路 PH1P35 FPGA 与 RISC-V MCU 的视觉系统，集图像采集、三模式处理、HDMI 显示、自动曝光和双轴云台控制于一体。
 
+<img src="docs/assets/system.jpg" alt="PH1P35视觉系统实物连接" width="560" />
+
+[快速开始](#首次克隆后) · [协作流程](CONTRIBUTING.md) · [版本发布模板](docs/RELEASE_TEMPLATE.md) · [复现验证记录](docs/REPRODUCIBILITY.md)
+
 ## 功能
 
 | 模式 | 当前功能 |
@@ -21,11 +25,18 @@
 
 器件：PH1P35MDG324-3；相机：SC520CS；双轴云台：MG90S。
 
-```text
-SC520CS → 两通道 CSI-2 / RAW10 → 前端 ISP（4像素/拍）
-        → DDR与后处理（2像素/拍）→ RED目标OSD → MOTION OSD
-        → 菜单/Logo OSD → HDMI
-RISC-V MCU：AHB配置/统计、相机I²C、按键交互、双轴PWM
+```mermaid
+flowchart LR
+    A[SC520CS CSI-2 RAW10] --> B[前端 ISP · 4像素/拍]
+    B --> C[DDR与后处理 · 2像素/拍]
+    C --> D[RED目标 OSD]
+    D --> E[MOTION OSD]
+    E --> F[菜单与Logo OSD]
+    F --> G[HDMI]
+    M[RISC-V MCU] -. 配置与统计 .-> B
+    M -. 模式与参数 .-> C
+    M -. I²C曝光 .-> A
+    M --> P[双轴PWM云台]
 ```
 
 ## 目录
@@ -76,6 +87,19 @@ RISC-V MCU：AHB配置/统计、相机I²C、按键交互、双轴PWM
 脚本也支持环境变量 `FD_ROOT`、`HOST_GCC`、`MODELSIM_VSIM`、`TD_SIM_DIR`。固件构建输出在 `FDWork/ph1p35_hello/build/`；测试结果在 `FPGA/sim/current/runs/`，均不提交 Git。
 
 TD 综合、布局布线、bitgen 和下载由用户手动操作。保留原工程实现设置，本次仓库整理不构成新的资源/时序签核。
+
+## 自动检查
+
+每次 Push / Pull Request 自动运行仓库输入检查、PowerShell 语法检查与七组 Host 测试。结果见仓库 **Actions** 页面，失败时可下载 Host 日志。基础 CI 不使用厂商工具，不运行 TD 实现或板卡下载。
+
+本地执行：
+
+```powershell
+python tools/check-repository.py
+./tools/check-powershell.ps1
+```
+
+检查依据 Git 跟踪列表；新增输入先 `git add` 再检查。工具路径示例和验证范围见 [协作流程](CONTRIBUTING.md)。
 
 ## bit / ELF 匹配
 

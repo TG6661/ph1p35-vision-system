@@ -36,9 +36,15 @@
 
 走 Desktop 发布流程时，不需要提前在网页创建同名仓库。如果网页已经创建了同名仓库，先不要再 Publish 到相同名称；可以换一个未使用的名称，避免远程初始化内容冲突。
 
-## 5. 邀请队友
+## 邀请队友
 
-仓库网页 → Settings → Collaborators（也可能位于 Collaborators and teams）→ Add people → 输入队友 GitHub 用户名 → 添加。队友接受邀请后即可访问私有仓库。
+1. 打开仓库 `TG6661/ph1p35-vision-system`，点击上方 **Settings**。
+2. 左侧 **Access → Collaborators**（界面也可能显示 Collaborators and teams）。
+3. 如果 GitHub 要求验证身份，由账号本人完成。
+4. 点击 **Add people**，输入队友 GitHub 用户名，选中正确账号并发送邀请。
+5. 队友登录自己的账号，在通知或邮件中点击 **Accept invitation**。
+6. 在 Collaborators 列表确认队友已接受。个人账号仓库的 collaborator 通常拥有写入权限；组织仓库如果提供角色选项，协作开发选择 Write。
+7. 队友克隆仓库，按 README 配置环境，再建立自己的功能分支进行开发。
 
 队友在 Desktop → File → Clone repository → 选中仓库 → 选择本地目录 → Clone。克隆后在根目录执行 `./tools/prepare-local.ps1`，设置自己的开发工具路径，再导入 TD/FD 工程。不要沿用你电脑上的旧 FD 工作区。
 

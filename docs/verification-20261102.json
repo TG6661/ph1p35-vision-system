@@ -1,0 +1,184 @@
+{
+  "date": "2026-11-02",
+  "source_commit": "516a9954aa3a1b7169c8be26cabf92aaa4fb4020",
+  "clone_method": "git clone --no-local --branch main --single-branch from synchronized local repository",
+  "td_input_references": 102,
+  "powershell_scripts": 6,
+  "host_suites": 7,
+  "host_result": "PASS",
+  "firmware_build": "PASS",
+  "elf_sha256": "7ca94937dfe562d7cd631c5b517f04a6fa7aa55e26f7329d4d9294e7a21423a4",
+  "rtl_suites": [
+    {
+      "suite": "lsc",
+      "result": "PASS",
+      "log_sha256": "7119c441e9d47dbe638c68b944a12ba7040cbd9ca9d96cd47397c8a65cf09bf9",
+      "reported_errors": 0,
+      "reported_warnings": 0
+    },
+    {
+      "suite": "gg",
+      "result": "PASS",
+      "log_sha256": "63181a791a4dcbd733cb531e0fdd06102ed278712f9a5d2dc57d8d44cd000eb7",
+      "reported_errors": 0,
+      "reported_warnings": 0
+    },
+    {
+      "suite": "ascii",
+      "result": "PASS",
+      "log_sha256": "99f01fe491945cc4ed4b3d460b25f85d8585ebbd29f4224464b6c8af4e375b69",
+      "reported_errors": 0,
+      "reported_warnings": 0
+    },
+    {
+      "suite": "ascii_full",
+      "result": "PASS",
+      "log_sha256": "86e0036c0ae70c42c42fa82e7a9a50d6332cff486b4100226d398c97be60576a",
+      "reported_errors": 0,
+      "reported_warnings": 0
+    },
+    {
+      "suite": "ascii_post",
+      "result": "PASS",
+      "log_sha256": "a5e67c7fe2c37fbdf50656a1f3c11b4a3bf0e5bbc7aaf85058d083c70000f0a5",
+      "reported_errors": 0,
+      "reported_warnings": 0
+    },
+    {
+      "suite": "crt",
+      "result": "PASS",
+      "log_sha256": "8eb786f32fe2bc07a73bc6fd1167902d49d88941db87592df753f09aa472d4f1",
+      "reported_errors": 0,
+      "reported_warnings": 0
+    },
+    {
+      "suite": "crt_latency",
+      "result": "PASS",
+      "log_sha256": "b53d4ebd94328d09d39fd70b0815b84421aeaab78216c47ea873f56e5fc7b8bb",
+      "reported_errors": 0,
+      "reported_warnings": 0
+    },
+    {
+      "suite": "cl",
+      "result": "PASS",
+      "log_sha256": "f7c52f6853398e2bf2886d50034527e4a08bca9cea8f377e9b5dca511a30ee47",
+      "reported_errors": 0,
+      "reported_warnings": 0
+    },
+    {
+      "suite": "negative_unit",
+      "result": "PASS",
+      "log_sha256": "9239edc66397d0688c33c07968adf8450f5d8446b11e1d943e057025cb5b3d2d",
+      "reported_errors": 0,
+      "reported_warnings": 0
+    },
+    {
+      "suite": "negative_serial",
+      "result": "PASS",
+      "log_sha256": "d9818a9ca8a0543a148cd68adf4d9f220e5888189415c698a2c09791c6327c8b",
+      "reported_errors": 0,
+      "reported_warnings": 0
+    },
+    {
+      "suite": "regs",
+      "result": "PASS",
+      "log_sha256": "1d45ccda52dfa47c879d8290dd564b5d9a9f14608f87c47d50e7f57921197067",
+      "reported_errors": 0,
+      "reported_warnings": 0
+    },
+    {
+      "suite": "post_contract",
+      "result": "PASS",
+      "log_sha256": "02a7409113b522e86783ececbcedc55ab357c155e473189569a3786f75c7dcfa",
+      "reported_errors": 0,
+      "reported_warnings": 0
+    },
+    {
+      "suite": "runtime",
+      "result": "PASS",
+      "log_sha256": "fc108a5c3bdddef2601638d21a2ec1d1f59c2957f00cd232c26beb76df2aa095",
+      "reported_errors": 0,
+      "reported_warnings": 5
+    },
+    {
+      "suite": "final_sink",
+      "result": "PASS",
+      "log_sha256": "513f7af874b18faf0c5805fa1fd6aae2fb3d335b8806c7e5676b8373ef4a06e3",
+      "reported_errors": 0,
+      "reported_warnings": 5
+    },
+    {
+      "suite": "replay_neg",
+      "result": "PASS",
+      "log_sha256": "24cb82368ce670ec8bc7fc211b77774181e3a0bd4e90985de449987f062645ec",
+      "reported_errors": 0,
+      "reported_warnings": 0
+    },
+    {
+      "suite": "replay_ascii",
+      "result": "PASS",
+      "log_sha256": "68fd34bc8df1e7a367d79fa6dba34fb05dffde1c38fb494c1ee252a2922d7e5c",
+      "reported_errors": 0,
+      "reported_warnings": 0
+    },
+    {
+      "suite": "stats",
+      "result": "PASS",
+      "log_sha256": "d3eee1f778cb944fd63ac8719e0c1da0542c11d7eb2e9b59ab70622a0605426e",
+      "reported_errors": 0,
+      "reported_warnings": 0
+    },
+    {
+      "suite": "mode_menu",
+      "result": "PASS",
+      "log_sha256": "b828f13d5678d6312f6f00f3dc33649ca23d14b9a77f57a0d48e6fbb035c1840",
+      "reported_errors": 0,
+      "reported_warnings": 0
+    },
+    {
+      "suite": "osd_timing",
+      "result": "PASS",
+      "log_sha256": "6edccb0f2c9a4b7ae7fe0c5b17d1f7c98ac0c868f48375ab6777c58f614d6a28",
+      "reported_errors": 0,
+      "reported_warnings": 0
+    },
+    {
+      "suite": "target_timing",
+      "result": "PASS",
+      "log_sha256": "1d35b57572a6a0616f4633bbd4c8aaf1d9efd03a97d0feecd9693a6532800912",
+      "reported_errors": 0,
+      "reported_warnings": 0
+    },
+    {
+      "suite": "camera_hud",
+      "result": "PASS",
+      "log_sha256": "b9785a00020c5f0e2ea7e208a1b7415b8c92816c9346af1d9c964fcaa80098f2",
+      "reported_errors": 0,
+      "reported_warnings": 0
+    },
+    {
+      "suite": "mcu_candidate",
+      "result": "PASS",
+      "log_sha256": "6b644d71de0ebb35580f2cc048105de2eff768d6afab9de6d140a6fec21ac685",
+      "reported_errors": 0,
+      "reported_warnings": 0
+    },
+    {
+      "suite": "servo",
+      "result": "PASS",
+      "log_sha256": "70e15596e745f10ee94dde56c5586e0db281c3b173cf4bf29acc49297db73381",
+      "reported_errors": 0,
+      "reported_warnings": 0
+    },
+    {
+      "suite": "actual_manifest",
+      "result": "PASS",
+      "log_sha256": "1f0f037c022bde4c52bb129b3d88e59f12ddf00f7ecadd37130beefb800489a1",
+      "reported_errors": 0,
+      "reported_warnings": 0
+    }
+  ],
+  "board_test": "not run",
+  "td_implementation": "not run",
+  "release": "not created"
+}
